@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
+    <script src="./jquery-3.1.0.min.js"></script>
+
+    <script src="angular.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div ng-controller="mainController">
+<!--
+            <h1>Hello world</h1>
+            <input ng-model='name' type="text">
+            <input ng-model="lastName" type="text">
+            Hello {{name}} {{lastName}}
+            <ul>
+                <li ng-repeat="name in names">{{name}}
+                    <a ng-click="removeName(name)">X</a>
+                </li>
+            </ul>
+-->
+            <br>
+             <input ng-model="query" type="text" class="form-control" placeholder="Search">
+             <br>
+            <form class="form-horisontal row" ng-submit=addName()>
+               <div class="col-lg-12">
+               
+               
+               <span class="input-group">
+                <input type="text" ng-model="enteredName" class="form-control " placeholder="add a task">
+               <span class="input-group-btn">
+                <input type="submit" value="add" class="btn btn-primary ">
+                   </span>
+                   </span>
+                   
+                </div>
+                
+            </form>
+            <br>
+            <p >tere are {{names.length}} task </p>
+            <div class="container">
+            <table class="table table-hover col-md-12" >
+               <tr>
+                <th>Delete</th>
+                <th ng-click="orderBy('name')">Task</th>
+                <th>Check</th>
+                <th>Done/Inprogress</th>
+                <th>Edit</th>
+                </tr>
+                <tr ng-repeat="name in names| filter:query | orderBy:name">
+                   <td>{{ $index + 1 }}</td>
+                  <div ng-show="show"><input type="text" ng-model="name"> {{name}}</div>
+                    <td><a ng-click="removeName(name)">X</a></td>
+                    <td>{{name}}</td>
+                    
+                    <td><input type="checkbox" ng-model="myVar" ng-bind="checkit(myVar,check)" ></td>
+                    <td>{{check}}</td>
+                    <td><input type="button" value="edit" ng-click="adit(show)"></td>
+                    
+                
+                </tr>
+            </table>
+            </div>
+        </div>
+    </div>
+  
+     <script src="scriptAngular.js"></script>    
+</body>
+</html>
